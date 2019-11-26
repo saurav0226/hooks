@@ -1,26 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import UseCallbackHookExample from './Hooks/useCallbackHook'
+import UseContextExample from './Hooks/UseContextHook/Example.component'
+import User from './Hooks/USeMemo/useMemo';
+import useCounterHook from './Hooks/CustomHook/CounterHook'
+// Keeps track of all created functions during the app's life 
+const functions = new Set();
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+  const {counter, updateCounter, setCounyter} = useCounterHook()
+
+
+  return (<div>
+    <UseCallbackHookExample />
+    <UseContextExample />
+    <User />
+    <h1>{counter}
+    <button onClick={() => updateCounter(counter+1)}>Update Counter</button>
+    <button onClick={() => setCounyter(counter+1)}>setCounyter Counter</button>
+    </h1>
+    
+  </div>)
 }
 
-export default App;
+export default App
